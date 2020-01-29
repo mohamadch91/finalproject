@@ -7,73 +7,126 @@
 
 #ifndef aras.h
 #define aras.h
-void map(int size, int aras79[size*size][size],char arr[size][size]){
-    char *a[4]={"   ","___","/","\\"};
-    char *b[1]={"   "};
-    for(int i=1;i<=size;i++){
-        if(i%2!=0){
-            aras79[0][i]=a[1];
+
+void map(int size, int aras79[size * size][size], char arr[size][size]) {
+    char *a[4] = {"   ", "___", "/", "\\"};
+    char *b[1] = {"   "};
+    int counter12 = 1, counter79 = 2;
+    for (int counter = 0; counter < size; ++counter) {
+        if (counter % 2 == 0) {
+            counter79 = 2;
+        } else {
+            counter79 = 4;
         }
-        if(i%2==0){
-            aras79[0][i]=a[0];
+        for (int counter1 = 0; counter1 < size; ++counter1) {
+            aras79[counter12][counter79] = arr[counter][counter1];
+            counter79 += 4;
         }
-        printf(" %s",aras79[0][i]);
+        counter12 += 2;
+
+    }
+    for (int i = 1; i <= size; i++) {
+        if (i % 2 != 0) {
+            aras79[0][i] = a[1];
+        }
+        if (i % 2 == 0) {
+            aras79[0][i] = a[0];
+        }
+//        for (int /*counter = 0; counter < size; ++counter) {
+//            if (counter % 2 == 0) {
+//                counter79 = 2;
+//            } else {
+//                counter79 = 4;
+//            }
+//            for (int counter1 = 0; counter1 < size; ++counter1) {
+//                aras79[counter12][counter79] = arr[counter][counter1];
+//                counter79 += 4;
+//            }
+//            counter12 += 2;
+//
+//        }*/
+        printf(" %s", aras79[0][i]);
     }
 
     printf("\n");
-    for(int i=1;i<=2*size+1;i+=2){
-        for(int j=1;j<=2*size+1;j++){
-            if(j%4==1){
-                aras79[i][j]=a[2];
+    for (int i = 1; i <= 2 * size + 1; i += 2) {
+        for (int j = 1; j <= 2 * size + 1; j++) {
+            if (j % 4 == 1) {
+                aras79[i][j] = a[2];
             }
-            if(j%4==2){
-                aras79[i][j]=a[0];
+            if (j % 4 == 2) {
+                aras79[i][j] = a[0];
             }
-            if(j%4==3){
-                aras79[i][j]=a[3];
+            if (j % 4 == 3) {
+                aras79[i][j] = a[3];
             }
-            if(j%4==0){
-                aras79[i][j]=a[1];
+            if (j % 4 == 0) {
+                aras79[i][j] = a[1];
             }
-            if(size%2==0&&i==1){
-                aras79[i][2*size+1]="";
+            if (size % 2 == 0 && i == 1) {
+                aras79[i][2 * size + 1] = "";
             }
-            if(i==2*size+1){
-                aras79[i][1]=" ";
-                aras79[i][2*size+1]="";
+            if (i == 2 * size + 1) {
+                aras79[i][1] = " ";
+                aras79[i][2 * size + 1] = "";
             }
-            if(size%2==0&&i==2*size+1){
-                aras79[2*size+1][2*size+1]="/";
+            if (size % 2 == 0 && i == 2 * size + 1) {
+                aras79[2 * size + 1][2 * size + 1] = "/";
             }
-            printf("%s",aras79[i][j]);
+//            for (int counter = 0; counter < size; ++counter) {
+//                if (counter % 2 == 0) {
+//                    counter79 = 2;
+//                } else {
+//                    counter79 = 4;
+//                }
+//                for (int counter1 = 0; counter1 < size; ++counter1) {
+//                    aras79[counter12][counter79] = arr[counter][counter1];
+//                    counter79 += 4;
+//                }
+//                counter12 += 2;
+//
+//            }
+            printf("%s", aras79[i][j]);
         }
         printf("\n");
-        for(int j=1;j<=2*size+1;j++){
-            if(j%4==1){
-                aras79[i+1][j]=a[3];
+        for (int j = 1; j <= 2 * size + 1; j++) {
+            if (j % 4 == 1) {
+                aras79[i + 1][j] = a[3];
             }
-            if(j%4==2){
-                aras79[i+1][j]=a[1];
+            if (j % 4 == 2) {
+                aras79[i + 1][j] = a[1];
             }
-            if(j%4==3){
-                aras79[i+1][j]=a[2];
+            if (j % 4 == 3) {
+                aras79[i + 1][j] = a[2];
             }
-            if(j%4==0){
-                aras79[i+1][j]=a[0];
+            if (j % 4 == 0) {
+                aras79[i + 1][j] = a[0];
             }
-            if(size%2==0&&i==2*size-1){
-                aras79[i+1][2*size+1]="";
+            if (size % 2 == 0 && i == 2 * size - 1) {
+                aras79[i + 1][2 * size + 1] = "";
             }
-            if(i==2*size+1){
-                for(int k=1;k<=2*size+1;k++){
-                    aras79[i+1][k]="";
+            if (i == 2 * size + 1) {
+                for (int k = 1; k <= 2 * size + 1; k++) {
+                    aras79[i + 1][k] = "";
                 }
             }
-            if(size%2==0&&i==2*size-1){
-                aras79[2*size][2*size+1]="\\";
+            if (size % 2 == 0 && i == 2 * size - 1) {
+                aras79[2 * size][2 * size + 1] = "\\";
             }
-            aras79[1][1]="a";
-            printf("%s",aras79[i+1][j]);
+//            for (int counter = 0; counter < size; ++counter) {
+//                if (counter % 2 == 0) {
+//                    counter79 = 2;
+//                } else {
+//                    counter79 = 4;
+//                }
+//                for (int counter1 = 0; counter1 < size; ++counter1) {
+//                    aras79[counter12][counter79] = arr[counter][counter1];
+//                    counter79 += 4;
+//                }
+//                counter12 += 2;
+//
+//            }
+            printf("%s", aras79[i + 1][j]);
         }
         printf("\n");
     }
@@ -118,7 +171,7 @@ char *rand_string(size_t size) { // reserves a place for NULL c
 }
 
 void addid(struct Node **head, int x, int y, char *name, char type, int id) {
-    struct Node *curr = *head;
+    struct Node *curr = head;
     struct Node *temp = NULL;
     int counter = 1;
     while (curr != NULL) {
@@ -141,126 +194,158 @@ void movenode(struct Node **head, int i, int j, int size, char arr[size][size], 
         if (counter == i) {
             switch (j) {
                 case 1:
-                    if (arr[curr->x][(curr->y) + 1] == '1') {
-                        arr[curr->x][(curr->y) + 1] = 'e';
-                        arr[curr->x][(curr->y)] = '4';
-                        head1[(curr->x) * size + curr->y].type = 'e';
-                        curr->y++;
+                    if ((curr->y + 1) < 0 || (curr->y + 1) > size - 1) {
+                        printf("out of map\n");
+                    } else {
+                        if (arr[curr->x][(curr->y) + 1] == '1') {
+                            arr[curr->x][(curr->y) + 1] = 'e';
+                            arr[curr->x][(curr->y)] = '4';
+                            head1[(curr->x) * size + curr->y].type = 'e';
+                            curr->y++;
 
-                    } else if (arr[curr->x][(curr->y) + 1] == '2') {
-                        head1[(curr->x) * size + curr->y + 1].type = 't';
-                        arr[curr->x][(curr->y) + 1] = 't';
-                        arr[curr->x][(curr->y)] = '4';
+                        } else if (arr[curr->x][(curr->y) + 1] == '2') {
+                            head1[(curr->x) * size + curr->y + 1].type = 't';
+                            arr[curr->x][(curr->y) + 1] = 't';
+                            arr[curr->x][(curr->y)] = '4';
 
-                        curr->y++;
-                    } else if (arr[curr->x][(curr->y) + 1] == '4') {
-                        arr[curr->x][(curr->y) + 1] = 'x';
-                        arr[curr->x][(curr->y)] = '4';
-                        curr->y++;
+                            curr->y++;
+                        } else if (arr[curr->x][(curr->y) + 1] == '4') {
+                            arr[curr->x][(curr->y) + 1] = 'x';
+                            arr[curr->x][(curr->y)] = '4';
+                            curr->y++;
 
-                    } else printf("forbidden");
+                        } else printf("forbidden\n");
+                    }
                     break;
                 case 2:
-                    if (arr[curr->x][(curr->y) - 1] == '1') {
-                        head1[(curr->x) * size + curr->y - 1].type = 'e';
-                        arr[curr->x][(curr->y) - 1] = 'e';
-                        arr[curr->x][(curr->y)] = '4';
-                        curr->y--;
-                    } else if (arr[curr->x][(curr->y) - 1] == '2') {
-                        head1[(curr->x) * size + curr->y - 1].type = 't';
-                        arr[curr->x][(curr->y) - 1] = 't';
-                        arr[curr->x][(curr->y)] = '4';
-                        curr->y--;
-                    } else if (arr[curr->x][(curr->y) - 1] == '4') {
-                        arr[curr->x][(curr->y) - 1] = 'x';
-                        arr[curr->x][(curr->y)] = '4';
-                        curr->y--;
-                    } else printf("forbidden");
+                    if (((curr->y) - 1) < 0 || ((curr->y) - 1) > size - 1) {
+                        printf("out of map\n");
+
+                    } else {
+                        if (arr[curr->x][(curr->y) - 1] == '1') {
+                            head1[(curr->x) * size + curr->y - 1].type = 'e';
+                            arr[curr->x][(curr->y) - 1] = 'e';
+                            arr[curr->x][(curr->y)] = '4';
+                            curr->y--;
+                        } else if (arr[curr->x][(curr->y) - 1] == '2') {
+                            head1[(curr->x) * size + curr->y - 1].type = 't';
+                            arr[curr->x][(curr->y) - 1] = 't';
+                            arr[curr->x][(curr->y)] = '4';
+                            curr->y--;
+                        } else if (arr[curr->x][(curr->y) - 1] == '4') {
+                            arr[curr->x][(curr->y) - 1] = 'x';
+                            arr[curr->x][(curr->y)] = '4';
+                            curr->y--;
+                        } else printf("forbidden\n");
+                    }
                     break;
                 case 3:
-                    if (arr[(curr->x) + 1][(curr->y) + 1] == '1') {
-                        arr[(curr->x) + 1][(curr->y) + 1] = 'e';
-                        arr[curr->x][(curr->y)] = '4';
-                        head1[(curr->x + 1) * size + curr->y + 1].type = 'e';
-                        curr->y++;
-                        curr->x++;
-                    } else if (arr[curr->x + 1][(curr->y) + 11] == '2') {
-                        head1[(curr->x + 1) * size + curr->y + 1].type = 't';
-                        arr[curr->x + 1][(curr->y) + 1] = 't';
-                        arr[curr->x][(curr->y)] = '4';
-                        curr->y++;
-                        curr->x++;
-                    } else if (arr[curr->x + 1][(curr->y) + 1] == '4') {
-                        arr[curr->x + 1][(curr->y) + 1] = 'x';
-                        arr[curr->x][(curr->y)] = '4';
-                        curr->y++;
-                        curr->x++;
-                    } else printf("forbidden");
+                    if ((curr->y + 1) < 0 || (curr->y + 1) > size - 1 || (curr->x + 1) < 0 ||
+                        (curr->x + 1) > size - 1) {
+                        printf("out of map\n");
+
+                    } else {
+                        if (arr[(curr->x) + 1][(curr->y) + 1] == '1') {
+                            arr[(curr->x) + 1][(curr->y) + 1] = 'e';
+                            arr[curr->x][(curr->y)] = '4';
+                            head1[(curr->x + 1) * size + curr->y + 1].type = 'e';
+                            curr->y++;
+                            curr->x++;
+                        } else if (arr[curr->x + 1][(curr->y) + 11] == '2') {
+                            head1[(curr->x + 1) * size + curr->y + 1].type = 't';
+                            arr[curr->x + 1][(curr->y) + 1] = 't';
+                            arr[curr->x][(curr->y)] = '4';
+                            curr->y++;
+                            curr->x++;
+                        } else if (arr[curr->x + 1][(curr->y) + 1] == '4') {
+                            arr[curr->x + 1][(curr->y) + 1] = 'x';
+                            arr[curr->x][(curr->y)] = '4';
+                            curr->y++;
+                            curr->x++;
+                        } else printf("forbidden\n");
+                    }
                     break;
                 case 4:
-                    if (arr[(curr->x) - 1][(curr->y) + 1] == '1') {
-                        head1[(curr->x) * size + curr->y].type = 'e';
-                        arr[(curr->x) - 1][(curr->y) + 1] = 'e';
-                        arr[curr->x][(curr->y)] = '4';
-                        curr->y++;
-                        curr->x--;
-                    } else if (arr[curr->x][(curr->y) - 1] == '2') {
-                        head1[(curr->x) * size + curr->y].type = 't';
-                        arr[curr->x][(curr->y) - 1] = 't';
-                        arr[curr->x][(curr->y)] = '4';
+                    if ((curr->x - 1) < 0 || (curr->x - 1) > size - 1 || (curr->y + 1) < 0 ||
+                        (curr->y + 1) > size - 1) {
+                        printf("out of map\n");
+                    } else {
+                        if (arr[(curr->x) - 1][(curr->y) + 1] == '1') {
+                            head1[(curr->x) * size + curr->y].type = 'e';
+                            arr[(curr->x) - 1][(curr->y) + 1] = 'e';
+                            arr[curr->x][(curr->y)] = '4';
+                            curr->y++;
+                            curr->x--;
+                        } else if (arr[curr->x][(curr->y) - 1] == '2') {
+                            head1[(curr->x) * size + curr->y].type = 't';
+                            arr[curr->x][(curr->y) - 1] = 't';
+                            arr[curr->x][(curr->y)] = '4';
 
-                        curr->y++;
-                        curr->x++;
-                    } else if (arr[curr->x + 1][(curr->y) + 1] == '4') {
-                        arr[curr->x][(curr->y) - 1] = 'x';
-                        arr[curr->x][(curr->y)] = '4';
-                        curr->y++;
-                        curr->x++;
-                    } else printf("forbidden");
+                            curr->y++;
+                            curr->x++;
+                        } else if (arr[curr->x + 1][(curr->y) + 1] == '4') {
+                            arr[curr->x][(curr->y) - 1] = 'x';
+                            arr[curr->x][(curr->y)] = '4';
+                            curr->y++;
+                            curr->x++;
+                        } else printf("forbidden\n");
+                    }
                     break;
                 case 5:
-                    if (arr[(curr->x) + 1][(curr->y) - 1] == '1') {
-                        head1[(curr->x) * size + curr->y].type = 'e';
-                        arr[(curr->x) + 1][(curr->y) - 1] = 'e';
-                        arr[curr->x][(curr->y)] = '4';
-                        curr->y--;
-                        curr->x++;
-                    } else if (arr[curr->x][(curr->y) - 1] == '2') {
-                        head1[(curr->x) * size + curr->y].type = 't';
-                        arr[curr->x][(curr->y) - 1] = 't';
-                        arr[curr->x][(curr->y)] = '4';
-                        curr->y++;
-                        curr->x++;
-                    } else if (arr[curr->x + 1][(curr->y) + 1] == '4') {
-                        arr[curr->x][(curr->y) - 1] = 'x';
-                        arr[curr->x][(curr->y)] = '4';
-                        curr->y++;
-                        curr->x++;
-                    } else printf("forbidden");
+                    if ((curr->x + 1) < 0 || (curr->x + 1) > size - 1 || (curr->y - 1) < 0 ||
+                        (curr->y - 1) > size - 1) {
+                        printf("out of map\n");
+                    } else {
+                        if (arr[(curr->x) + 1][(curr->y) - 1] == '1') {
+                            head1[(curr->x) * size + curr->y].type = 'e';
+                            arr[(curr->x) + 1][(curr->y) - 1] = 'e';
+                            arr[curr->x][(curr->y)] = '4';
+                            curr->y--;
+                            curr->x++;
+                        } else if (arr[curr->x][(curr->y) - 1] == '2') {
+                            head1[(curr->x) * size + curr->y].type = 't';
+                            arr[curr->x][(curr->y) - 1] = 't';
+                            arr[curr->x][(curr->y)] = '4';
+                            curr->y++;
+                            curr->x++;
+                        } else if (arr[curr->x + 1][(curr->y) + 1] == '4') {
+                            arr[curr->x][(curr->y) - 1] = 'x';
+                            arr[curr->x][(curr->y)] = '4';
+                            curr->y++;
+                            curr->x++;
+                        } else printf("forbidden\n");
+                    }
                     break;
                 case 6:
-                    if (arr[(curr->x) - 1][(curr->y) - 1] != '3') {
-                        head1[(curr->x) * size + curr->y].type = 'e';
-                        arr[(curr->x) - 1][(curr->y) - 1] = 'e';
-                        arr[curr->x][(curr->y)] = '4';
-                        curr->y--;
-                        curr->x--;
-                    } else if (arr[curr->x][(curr->y) - 1] == '2') {
-                        head1[(curr->x) * size + curr->y].type = 't';
-                        arr[curr->x][(curr->y) - 1] = 't';
-                        arr[curr->x][(curr->y)] = '4';
-                        curr->y++;
-                        curr->x++;
-                    } else if (arr[curr->x + 1][(curr->y) + 1] == '4') {
-                        arr[curr->x][(curr->y) - 1] = 'x';
-                        arr[curr->x][(curr->y)] = '4';
-                        curr->y++;
-                        curr->x++;
-                    } else printf("forbidden");
+                    if ((curr->y - 1) < 0 || (curr->y - 1) > size - 1 || (curr->x - 1) < 0 ||
+                        (curr->x - 1) > size - 1) {
+                        printf("out of map\n");
+                    } else {
+                        if (arr[(curr->x) - 1][(curr->y) - 1] != '3') {
+                            head1[(curr->x) * size + curr->y].type = 'e';
+                            arr[(curr->x) - 1][(curr->y) - 1] = 'e';
+                            arr[curr->x][(curr->y)] = '4';
+                            curr->y--;
+                            curr->x--;
+                        } else if (arr[curr->x][(curr->y) - 1] == '2') {
+                            head1[(curr->x) * size + curr->y].type = 't';
+                            arr[curr->x][(curr->y) - 1] = 't';
+                            arr[curr->x][(curr->y)] = '4';
+                            curr->y++;
+                            curr->x++;
+                        } else if (arr[curr->x + 1][(curr->y) + 1] == '4') {
+                            arr[curr->x][(curr->y) - 1] = 'x';
+                            arr[curr->x][(curr->y)] = '4';
+                            curr->y++;
+                            curr->x++;
+                        } else printf("forbidden\n");
+                    }
                     break;
 
             }
         }
+        curr = curr->next;
+        counter++;
     }
 }
 
@@ -308,7 +393,7 @@ void deleteNode(struct Node **head, int data) {
 void printNodes(struct Node *head) {
     struct Node *curr = head;
     while (curr != NULL) {
-        printf("%d ", curr->x);
+        printf("%d %d %c  %s  slm\n ", curr->x, curr->y, curr->type, curr->name);
         curr = curr->next;
     }
     printf("\n");
@@ -329,16 +414,18 @@ int mainmove() {
     return i;
 }
 
-char *readmap(FILE *fp) {
-    int size;
-    fread(&size, sizeof(int), 1, fp);
-    printf("%d", size);
-    int size1 = size * size;
-    int counter;
-    char aras1[size1];
-    fread(aras1, sizeof(char), size1, fp);
-    return aras1;
-}
+//void readmap(FILE *fp,int size,unsigned char location[size*size]) {
+//    int size1;
+//    fread(&size1, sizeof(int), 1, fp);
+////    printf("%d", size);
+//    int size2 = size * size;
+//    int counter;
+//    fread(location, sizeof(unsigned char), size2, fp);
+//    for (int counter1379 = 0; counter1379 <size2 ; ++counter1379) {
+//printf("%u",location[counter1379]);
+//
+//}
+//}
 
 int showmap() {
     printf("[1] Load\n");
@@ -364,31 +451,40 @@ int showmap() {
     return counter;
 }
 
-void flocation(int cell, int size1, char arr[size1][size1], char *location, struct Node *head) {
+void flocation(int cell, int size1, char arr[size1][size1], char location[size1 * size1], struct Node **head) {
     int counter, counter1, i = 0, j = 0, counter3 = 0, rand1;
     for (counter = 0; counter < size1; counter++) {
-        for (counter1 = size1; counter1 >= 0; counter1--) {
+        for (counter1 = size1 - 1; counter1 >= 0; counter1--) {
             arr[counter1][counter] = location[counter3];
+//            printf("%c\n",arr[counter1][counter]);
+            counter3++;
         }
     }
     for (i = 0; i < cell; i++) {
         int x, y;
         x = rand() % size1;
         y = rand() % size1;
-        while (arr[x][y] != '4'&&arr[x][y]=='x') {
+//        printf("%c\n",arr[x][y]);
+        while (arr[x][y] != '4' || arr[x][y] == 'x') {
+//            printf("slm");
             x = rand() % size1;
             y = rand() % size1;
+//            printf("%c\n",arr[x][y]);
         }
         char *str = rand_string(3);
-        pushBack(&head, x, y, 0, 'x', str);
+//        printf("%c\n",arr[x][y]);
+        pushBack(&(*head), x, y, 0, 'x', str);
         arr[x][y] = 'x';
     }
 }
+
 int movemenu(struct Node *head) {
     struct Node *curr = head;
-    printf("please choose one of you cells");
+    printf("please choose one of you cells\n");
     int counter = 1;
+//    printf("salam mamad");
     while (curr != NULL) {
+
         printf("[%d] %s (%d,%d)\n", counter, curr->name, curr->x, curr->y);
         curr = curr->next;
         counter++;
@@ -398,7 +494,7 @@ int movemenu(struct Node *head) {
     return j;
 }
 
-void splitcell(int cell, struct Node **head) {
+void splitcell(int cell, struct Node **head, int size, char arr[size][size]) {
     int x, y;
     struct Node *curr = *head;
     int counter = 1;
@@ -408,19 +504,39 @@ void splitcell(int cell, struct Node **head) {
         if (counter == cell) {
 
             if (curr->energy >= 80) {
-                x = rand() % 2 - 1;
-                y = rand() % 2 - 1;
-                addid(&head, curr->x + x, curr->y + y, str, '4', cell);
+                x = rand() % 3 - 1;
+                y = rand() % 3 - 1;
+                while(x==1||x==-1){
+                    x = rand() % 3 - 1;
+                    y = rand() % 3 - 1;
+
+                }
+                if (arr[curr->x + x][curr->y + y] == '1') {
+                    arr[curr->x + x][curr->y + y] = 'e';
+                    addid(&(*head), curr->x + x, curr->y + y, str, 'x', cell);
+                }
+                if (arr[curr->x + x][curr->y + y] == '3') {
+                    while (arr[curr->x + x][curr->y + y] == '3') {
+
+                        x = rand() % 3 - 1;
+                        y = rand() % 3 - 1;
+
+                        //bayad jahat ha check shavad va to while biroonesh fargh konadd
+                    }
+                    arr[curr->x + x][curr->y + y] = 'x';
+                    addid(&head, curr->x + x, curr->y + y, str, 'x', cell);
+                }
+                if (arr[curr->x + x][curr->y + y] == '2') {
+                    arr[curr->x + x][curr->y + y] = 't';
+                }
+
             }
         }
         curr = curr->next;
         counter++;
 
     }
-
-
 }
-
 void boostenergy(struct Node **head, int cell, struct Node1 head1[], int size) {
     struct Node *curr = *head;
     int counter = 1;
@@ -438,7 +554,7 @@ void boostenergy(struct Node **head, int cell, struct Node1 head1[], int size) {
     }
 }
 
-void save(FILE *fp, struct Node1 head1[], struct Node *head, int size,int cell) {
+void save(FILE *fp, struct Node1 head1[], struct Node *head, int size, int cell) {
     int size1 = size * size;
     for (int counter = 0; counter < size1; counter++) {
         fwrite(&head1[counter], sizeof(struct Node1), 1, fp);
@@ -446,7 +562,7 @@ void save(FILE *fp, struct Node1 head1[], struct Node *head, int size,int cell) 
     }
     int counter1 = 1;
     struct Node *curr = head;
-    fwrite(&cell, sizeof(int),1,fp);
+    fwrite(&cell, sizeof(int), 1, fp);
     while (curr != NULL) {
         counter1++;
         fwrite(curr, sizeof(struct Node), 1, fp);
@@ -454,13 +570,14 @@ void save(FILE *fp, struct Node1 head1[], struct Node *head, int size,int cell) 
     }
 
 }
+
 void load(FILE *fp, struct Node1 head1[], struct Node **head, int size) {
     int size1 = size * size;
     for (int counter = 0; counter < size1; counter++) {
         fread(&head1[counter], sizeof(struct Node1), 1, fp);
     }
     int j;
-    fread(&j, sizeof(int),1,fp);
+    fread(&j, sizeof(int), 1, fp);
     struct Node *curr = NULL;
     for (int counter1 = 0; counter1 < j; ++counter1) {
         fread(curr, sizeof(struct Node), 1, fp);
